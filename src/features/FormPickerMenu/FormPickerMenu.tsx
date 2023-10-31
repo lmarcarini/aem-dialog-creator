@@ -12,7 +12,7 @@ export const FormPickerMenu = () => {
       <Button
         fullWidth
         rightSection={<IconArrowRight />}
-        onClick={addComponent}
+        onClick={() => addComponent({ type: "TextField" })}
       >
         Text Field
       </Button>

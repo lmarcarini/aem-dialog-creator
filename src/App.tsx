@@ -1,8 +1,9 @@
-import { AppShell, Burger } from "@mantine/core";
+import { AppShell, Burger, Group } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import "@mantine/core/styles.css";
 import "@mantine/code-highlight/styles.css";
-import { CodeVisualizer, FormPickerMenu } from "./features";
+import { CodeVisualizer, FormPickerMenu, ResetButton } from "./features";
+import styles from "./App.module.css";
 
 function App() {
   const [opened, { toggle }] = useDisclosure();
@@ -14,7 +15,10 @@ function App() {
       padding="md"
     >
       <AppShell.Header>
-        <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
+        <Group className={styles.header}>
+          <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
+          <ResetButton />
+        </Group>
       </AppShell.Header>
       <AppShell.Navbar p="md">
         <FormPickerMenu />

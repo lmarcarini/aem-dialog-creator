@@ -10,6 +10,7 @@ export type ComponentI = {
 interface ComponentsState {
   structure: ComponentI[];
   addComponent: (component: ComponentI) => void;
+  reset: () => void;
 }
 
 export const useComponentsStore = create<ComponentsState>()(
@@ -19,6 +20,11 @@ export const useComponentsStore = create<ComponentsState>()(
         structure: [],
         addComponent: (component) =>
           set((state) => ({ structure: [...state.structure, component] })),
+        reset: () =>
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          set((_state) => ({
+            structure: [] as ComponentI[],
+          })),
       }),
       {
         name: "components-storage",
