@@ -11,8 +11,29 @@ ${spacing}    fieldLabel="Text"
 ${spacing}    name="./text"/>`;
 };
 
+const getTextArea = (nestingLevel: number) => {
+  const spacing = " ".repeat(nestingLevel * TAB_SPACING);
+  return `${spacing}<text
+${spacing}    jcr:primaryType="nt:unstructured"
+${spacing}    sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+${spacing}    fieldLabel="Text Area"
+${spacing}    name="./textArea"/>`;
+};
+
+const getSingleComponentXml =
+  (nestingLevel: number) => (component: ComponentI) => {
+    switch (component.type) {
+      case "TextField":
+        return getTextField(nestingLevel);
+      case "TextArea":
+        return getTextArea(nestingLevel);
+      default:
+        return "";
+    }
+  };
+
 export const getComponentXml = (structure: ComponentI[]) => {
-  const childrenXml = structure.map(() => getTextField(5)).join("\n");
+  const childrenXml = structure.map(getSingleComponentXml(5)).join("\n");
 
   return `
 <?xml version="1.0" encoding="UTF-8"?>

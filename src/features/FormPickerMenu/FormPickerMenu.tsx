@@ -16,6 +16,13 @@ export const FormPickerMenu = () => {
       >
         Text Field
       </Button>
+      <Button
+        fullWidth
+        rightSection={<IconArrowRight />}
+        onClick={() => addComponent({ type: "TextArea" })}
+      >
+        Text Area
+      </Button>
     </Stack>
   );
 };

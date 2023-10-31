@@ -1,8 +1,10 @@
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 
+export type ComponentTypes = "TextField" | "TextArea";
+
 export type ComponentI = {
-  type: string;
+  type: ComponentTypes;
   options?: { [key: string]: string };
   child?: ComponentI[];
 };
