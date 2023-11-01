@@ -1,27 +1,23 @@
-# React + TypeScript + Vite
+# ADOBE AEM VISUAL DIALOG CREATOR
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This application seeks to help to create "_cq_dialog/content.xml" code for Adobe Experience Manager.
 
-Currently, two official plugins are available:
+Creating the necessary xml for AEM custom components editing dialog can be quite daunting for the begginers, the tooling is somewhat lacking. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- Code visualization
+- Automatic form fields creation
+- Tree visualization with rearranging capability
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## To do
 
-- Configure the top-level `parserOptions` property like this:
+- Form component properties editing
+- Allow Nesting
+- Creating components
+- Dialog visualization preview
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+## Other links
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Check the official documentation about the adobe form components: 
+https://developer.adobe.com/experience-manager/reference-materials/6-5/granite-ui/api/jcr_root/libs/granite/ui/index.html
