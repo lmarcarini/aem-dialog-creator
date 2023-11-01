@@ -1,10 +1,17 @@
 import { Button, Stack, Title } from "@mantine/core";
 import { IconArrowRight } from "@tabler/icons-react";
+import {
+  ComponentTypes,
+  useComponentsStore,
+} from "../../stores/useComponentsStore";
 import classes from "./FormPickerMenu.module.css";
-import { useComponentsStore } from "../../stores/useComponentsStore";
 
 export const FormPickerMenu = () => {
   const addComponent = useComponentsStore((state) => state.addComponent);
+
+  const handleClick = (componentType: ComponentTypes) => () => {
+    addComponent({ type: componentType, title: componentType });
+  };
 
   return (
     <Stack className={classes.wrapper}>
@@ -12,14 +19,14 @@ export const FormPickerMenu = () => {
       <Button
         fullWidth
         rightSection={<IconArrowRight />}
-        onClick={() => addComponent({ type: "TextField" })}
+        onClick={handleClick("TextField")}
       >
         Text Field
       </Button>
       <Button
         fullWidth
         rightSection={<IconArrowRight />}
-        onClick={() => addComponent({ type: "TextArea" })}
+        onClick={handleClick("TextArea")}
       >
         Text Area
       </Button>

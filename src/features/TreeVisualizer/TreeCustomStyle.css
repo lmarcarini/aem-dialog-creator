@@ -1,0 +1,14 @@
+.customTree .rst__rowContents {
+  background-color: var(--mantine-color-violet-filled);
+  color: white;
+}
+
+.customTree .rst__moveHandle {
+  background-color: var(--mantine-primary-color-filled);
+  color: var(--_app-shell-border-color);
+}
+
+.customTree .rst__lineBlock::before,
+.customTree .rst__lineBlock::after {
+  background-color: var(--_app-shell-border-color);
+}

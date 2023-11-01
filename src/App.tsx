@@ -1,12 +1,21 @@
-import { AppShell, Burger, Group } from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
-import "@mantine/core/styles.css";
 import "@mantine/code-highlight/styles.css";
-import { CodeVisualizer, FormPickerMenu, ResetButton } from "./features";
+import { AppShell, Burger, Group, UnstyledButton } from "@mantine/core";
+import "@mantine/core/styles.css";
+import { useDisclosure } from "@mantine/hooks";
+import { IconCode, IconListTree } from "@tabler/icons-react";
 import styles from "./App.module.css";
+import {
+  CodeVisualizer,
+  FormPickerMenu,
+  ResetButton,
+  TreeVisualizer,
+} from "./features";
+import { useViewStore } from "./stores/useViewStore";
 
 function App() {
   const [opened, { toggle }] = useDisclosure();
+
+  const { currentView, setView } = useViewStore((state) => state);
 
   return (
     <AppShell
@@ -17,6 +26,12 @@ function App() {
       <AppShell.Header>
         <Group className={styles.header}>
           <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
+          <UnstyledButton onClick={() => setView("code")}>
+            <IconCode />
+          </UnstyledButton>
+          <UnstyledButton onClick={() => setView("tree")}>
+            <IconListTree />
+          </UnstyledButton>
           <ResetButton />
         </Group>
       </AppShell.Header>
@@ -24,7 +39,8 @@ function App() {
         <FormPickerMenu />
       </AppShell.Navbar>
       <AppShell.Main>
-        <CodeVisualizer />
+        {currentView === "code" && <CodeVisualizer />}
+        {currentView === "tree" && <TreeVisualizer />}
       </AppShell.Main>
     </AppShell>
   );

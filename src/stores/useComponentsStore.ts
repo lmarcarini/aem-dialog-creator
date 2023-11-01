@@ -5,6 +5,7 @@ export type ComponentTypes = "TextField" | "TextArea";
 
 export type ComponentI = {
   type: ComponentTypes;
+  title: ComponentTypes;
   options?: { [key: string]: string };
   child?: ComponentI[];
 };
@@ -12,6 +13,7 @@ export type ComponentI = {
 interface ComponentsState {
   structure: ComponentI[];
   addComponent: (component: ComponentI) => void;
+  setStructure: (structure: ComponentI[]) => void;
   reset: () => void;
 }
 
@@ -22,8 +24,9 @@ export const useComponentsStore = create<ComponentsState>()(
         structure: [],
         addComponent: (component) =>
           set((state) => ({ structure: [...state.structure, component] })),
+        setStructure: (structure: ComponentI[]) =>
+          set((_state) => ({ structure })),
         reset: () =>
-          // eslint-disable-next-line @typescript-eslint/no-unused-vars
           set((_state) => ({
             structure: [] as ComponentI[],
           })),

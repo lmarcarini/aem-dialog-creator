@@ -1,0 +1,6 @@
+.treeWrapper {
+  height: calc(
+    100dvh - var(--app-shell-header-offset, 0px) -
+      var(--app-shell-header-offset, 0px) - var(--app-shell-padding)
+  );
+}
