@@ -2,7 +2,7 @@
 
 This application seeks to help to create "_cq_dialog/content.xml" code for Adobe Experience Manager.
 
-Creating the necessary xml for AEM custom components editing dialog can be quite daunting for the begginers, the tooling is somewhat lacking. 
+Creating the necessary xml for AEM custom components editing dialog can be quite daunting for the begginers, the tooling is somewhat lacking. This web application seeks to provide a streamlined visual aid to create a funcional custom dialog.
 
 ## Features
 
@@ -13,9 +13,10 @@ Creating the necessary xml for AEM custom components editing dialog can be quite
 ## To do
 
 - Form component properties editing
-- Allow Nesting
-- Creating components
+- Allow Nested components
+- Creating additional components
 - Dialog visualization preview
+- Error parsing
 
 ## Other links
 
