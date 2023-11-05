@@ -1,9 +1,6 @@
 import { Button, Stack, Title } from "@mantine/core";
 import { IconArrowRight } from "@tabler/icons-react";
-import {
-  ComponentTypes,
-  useComponentsStore,
-} from "../../stores/useComponentsStore";
+import { ComponentTypes, useComponentsStore } from "stores/useComponentsStore";
 import classes from "./FormPickerMenu.module.css";
 
 export const FormPickerMenu = () => {

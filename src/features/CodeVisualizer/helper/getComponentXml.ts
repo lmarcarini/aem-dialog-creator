@@ -2,18 +2,18 @@ import { ComponentI } from "../../../stores/useComponentsStore";
 
 const TAB_SPACING = 4;
 
-const getTextField = (nestingLevel: number) => {
+const getTextField = (nestingLevel: number, component: ComponentI) => {
   const spacing = " ".repeat(nestingLevel * TAB_SPACING);
-  return `${spacing}<text
+  return `${spacing}<${component.title}
 ${spacing}    jcr:primaryType="nt:unstructured"
 ${spacing}    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
 ${spacing}    fieldLabel="Text"
 ${spacing}    name="./text"/>`;
 };
 
-const getTextArea = (nestingLevel: number) => {
+const getTextArea = (nestingLevel: number, component: ComponentI) => {
   const spacing = " ".repeat(nestingLevel * TAB_SPACING);
-  return `${spacing}<text
+  return `${spacing}<${component.title}
 ${spacing}    jcr:primaryType="nt:unstructured"
 ${spacing}    sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
 ${spacing}    fieldLabel="Text Area"
@@ -24,9 +24,9 @@ const getSingleComponentXml =
   (nestingLevel: number) => (component: ComponentI) => {
     switch (component.type) {
       case "TextField":
-        return getTextField(nestingLevel);
+        return getTextField(nestingLevel, component);
       case "TextArea":
-        return getTextArea(nestingLevel);
+        return getTextArea(nestingLevel, component);
       default:
         return "";
     }

@@ -1,6 +1,9 @@
 .customTree .rst__rowContents {
-  background-color: var(--mantine-color-violet-filled);
-  color: white;
+  letter-spacing: 0.02rem;
+  font-size: 1.25rem;
+  font-family: Helvetica, sans-serif;
+  background-color: #ccceda;
+  color: rgb(58, 75, 136);
 }
 
 .customTree .rst__moveHandle {
