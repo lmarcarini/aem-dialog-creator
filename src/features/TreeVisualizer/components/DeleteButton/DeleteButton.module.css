@@ -1,0 +1,12 @@
+.trashButton {
+  background-color: #ffffff00;
+  height: 100%;
+}
+
+.trashIcon {
+  color: rgb(220, 87, 87);
+}
+
+.trashButton:hover .trashIcon {
+  color: rgb(249, 40, 40);
+}

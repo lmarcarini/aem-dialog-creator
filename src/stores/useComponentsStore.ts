@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 
-export type ComponentTypes = "TextField" | "TextArea";
+export type ComponentTypes = "textfield" | "textarea";
 
 export type ComponentI = {
   type: ComponentTypes;

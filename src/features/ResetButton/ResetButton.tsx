@@ -7,8 +7,8 @@ import {
   UnstyledButton,
 } from "@mantine/core";
 import { IconTrash } from "@tabler/icons-react";
-import { useComponentsStore } from "../../stores/useComponentsStore";
 import { useDisclosure } from "@mantine/hooks";
+import { useComponentsStore } from "stores/useComponentsStore";
 
 export const ResetButton = () => {
   const reset = useComponentsStore((state) => state.reset);
