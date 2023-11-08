@@ -1,32 +1,39 @@
+import { getFieldProperties } from "utils/getFieldProperties";
 import { ComponentI } from "../../../stores/useComponentsStore";
 
 const TAB_SPACING = 4;
 
-const getTextField = (nestingLevel: number, component: ComponentI) => {
-  const spacing = " ".repeat(nestingLevel * TAB_SPACING);
-  return `${spacing}<${component.title}
-${spacing}    jcr:primaryType="nt:unstructured"
-${spacing}    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-${spacing}    fieldLabel="Text"
-${spacing}    name="./text"/>`;
-};
+const getFieldXml = (nestingLevel: number, component: ComponentI) => {
+  const singleSpacing = " ".repeat(TAB_SPACING);
+  const spacing = singleSpacing.repeat(nestingLevel);
+  const properties = getFieldProperties(component.type);
 
-const getTextArea = (nestingLevel: number, component: ComponentI) => {
-  const spacing = " ".repeat(nestingLevel * TAB_SPACING);
+  const filterNoOption = (option: (typeof properties.optionFields)[0]) =>
+    component.options && component.options[option.title];
+
+  const getOptions = (option: (typeof properties.optionFields)[0]) => {
+    if (!component.options || !component.options[option.title]) return "";
+    const curValue = component.options[option.title];
+    if (option.type === "boolean")
+      return `${spacing}    ${option.title}="{Boolean}${curValue === "on"}"`;
+    return `${spacing}    ${option.title}="${curValue}"`;
+  };
+
   return `${spacing}<${component.title}
-${spacing}    jcr:primaryType="nt:unstructured"
-${spacing}    sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
-${spacing}    fieldLabel="Text Area"
-${spacing}    name="./textArea"/>`;
+${spacing + singleSpacing}jcr:primaryType="nt:unstructured"
+${spacing + singleSpacing}sling:resourceType="${properties.resourceTypePath}"
+${
+  properties.optionFields.filter(filterNoOption).map(getOptions).join("\n") ||
+  spacing + singleSpacing
+}/>`;
 };
 
 const getSingleComponentXml =
   (nestingLevel: number) => (component: ComponentI) => {
     switch (component.type) {
-      case "TextField":
-        return getTextField(nestingLevel, component);
-      case "TextArea":
-        return getTextArea(nestingLevel, component);
+      case "textfield":
+      case "textarea":
+        return getFieldXml(nestingLevel, component);
       default:
         return "";
     }

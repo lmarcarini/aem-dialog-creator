@@ -1,9 +1,20 @@
-import { ActionIcon, Button, Group, Modal, TextInput } from "@mantine/core";
+import {
+  ActionIcon,
+  Button,
+  Checkbox,
+  CheckboxGroup,
+  Group,
+  Modal,
+  NativeSelect,
+  NumberInput,
+  TextInput,
+} from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconEdit } from "@tabler/icons-react";
 import styles from "./EditButton.module.css";
 import { useMemo } from "react";
 import { useComponentsStore } from "stores/useComponentsStore";
+import { getFieldProperties } from "utils/getFieldProperties";
 
 type Props = { path: number[] };
 
@@ -25,15 +36,26 @@ export const EditButton = (props: Props) => {
 
   if (!node) return null;
 
+  const properties = getFieldProperties(node.type);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const nodeNumber = props.path.at(0);
     if (nodeNumber === undefined) return null;
+    const optionsForm = Object.fromEntries(
+      properties.optionFields
+        .filter((optionData) => formData.get(optionData.title))
+        .map((optionData) => [
+          optionData.title,
+          formData.get(optionData.title) as string,
+        ])
+    );
     const newStructure = [...structure];
     newStructure[nodeNumber] = {
       ...node,
       title: formData.get("title")?.toString() || "",
+      options: optionsForm,
     };
     setStructure(newStructure);
     close();
@@ -50,6 +72,58 @@ export const EditButton = (props: Props) => {
             name="title"
             defaultValue={node?.title}
           />
+          {properties.optionFields.map((optionData) => {
+            const defaultValue = node.options
+              ? node.options[optionData.title]
+              : optionData.default;
+            switch (optionData.type) {
+              case "string":
+                return (
+                  <TextInput
+                    key={optionData.title}
+                    label={optionData.title}
+                    description={optionData.description}
+                    required={!!optionData.required}
+                    name={optionData.title}
+                    defaultValue={defaultValue}
+                  />
+                );
+              case "number":
+                return (
+                  <NumberInput
+                    key={optionData.title}
+                    label={optionData.title}
+                    description={optionData.description}
+                    required={!!optionData.required}
+                    name={optionData.title}
+                    defaultValue={defaultValue}
+                  />
+                );
+              case "boolean":
+                return (
+                  <Checkbox
+                    required={!!optionData.required}
+                    name={optionData.title}
+                    label={optionData.title}
+                    defaultChecked={!!defaultValue}
+                  ></Checkbox>
+                );
+              case "list":
+                return (
+                  <NativeSelect
+                    key={optionData.title}
+                    label={optionData.title}
+                    description={optionData.description}
+                    required={!!optionData.required}
+                    name={optionData.title}
+                    defaultValue={defaultValue}
+                    data={optionData.listOptions}
+                  />
+                );
+              default:
+                return <></>;
+            }
+          })}
           <Group justify="center">
             <Button variant="outline" onClick={close}>
               Cancel
