@@ -1,8 +1,9 @@
 import SortableTree from "@nosferatu500/react-sortable-tree";
-import styles from "./TreeVisualizer.module.css";
-import { useComponentsStore } from "../../stores/useComponentsStore";
 import "@nosferatu500/react-sortable-tree/style.css";
 import "./TreeCustomStyle.css";
+import styles from "./TreeVisualizer.module.css";
+import { DeleteButton, EditButton } from "./components";
+import { useComponentsStore } from "stores/useComponentsStore";
 
 export const TreeVisualizer = () => {
   const structure = useComponentsStore((state) => state.structure);
@@ -13,8 +14,11 @@ export const TreeVisualizer = () => {
       <SortableTree
         className="customTree"
         treeData={structure}
-        onChange={(curStructure) => setStructure(curStructure)}
+        onChange={setStructure}
         canNodeHaveChildren={(_node) => false}
+        generateNodeProps={({ path }) => ({
+          buttons: [<EditButton path={path} />, <DeleteButton path={path} />],
+        })}
       />
     </div>
   );

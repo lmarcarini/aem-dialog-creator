@@ -16,10 +16,13 @@ specifiers:
   eslint-plugin-react-hooks: ^4.6.0
   eslint-plugin-react-refresh: ^0.4.3
   react: ^18.2.0
+  react-dnd: ^16.0.1
+  react-dnd-html5-backend: ^16.0.1
   react-dom: ^18.2.0
   redux: ^4.2.1
   typescript: ^5.0.2
   vite: ^4.4.5
+  vite-tsconfig-paths: ^4.2.1
   vitest: ^0.34.6
   zustand: ^4.4.4
 
@@ -30,6 +33,8 @@ dependencies:
   '@nosferatu500/react-sortable-tree': 4.4.0_ew3x2u2ugx4vldoypxrzsnu5mm
   '@tabler/icons-react': 2.40.0_react@18.2.0
   react: 18.2.0
+  react-dnd: 16.0.1_o5ysialsahsznabqayk7pree4e
+  react-dnd-html5-backend: 16.0.1
   react-dom: 18.2.0_react@18.2.0
   redux: 4.2.1
   zustand: 4.4.4_o5ysialsahsznabqayk7pree4e
@@ -46,6 +51,7 @@ devDependencies:
   eslint-plugin-react-refresh: 0.4.4_eslint@8.52.0
   typescript: 5.2.2
   vite: 4.5.0
+  vite-tsconfig-paths: 4.2.1_cnaluuumdmttzz4zpr3jp6tchm
   vitest: 0.34.6
 
 packages:
@@ -472,12 +478,24 @@ packages:
     resolution: {integrity: sha512-kLy0PJDDwvwwTXxqTFNAAllPHD73AycE9ypWeln/IguoGBEbvFcPDbCV03G52bEcC5E+YgupBE0VzHGdC8SIXg==}
     dev: false
 
+  /@react-dnd/asap/5.0.2:
+    resolution: {integrity: sha512-WLyfoHvxhs0V9U+GTsGilGgf2QsPl6ZZ44fnv0/b8T3nQyvzxidxsg/ZltbWssbsRDlYW8UKSQMTGotuTotZ6A==}
+    dev: false
+
   /@react-dnd/invariant/2.0.0:
     resolution: {integrity: sha512-xL4RCQBCBDJ+GRwKTFhGUW8GXa4yoDfJrPbLblc3U09ciS+9ZJXJ3Qrcs/x2IODOdIE5kQxvMmE2UKyqUictUw==}
     dev: false
 
+  /@react-dnd/invariant/4.0.2:
+    resolution: {integrity: sha512-xKCTqAK/FFauOM9Ta2pswIyT3D8AQlfrYdOi/toTPEhqCuAs1v5tcJ3Y08Izh1cJ5Jchwy9SeAXmMg6zrKs2iw==}
+    dev: false
+
   /@react-dnd/shallowequal/2.0.0:
     resolution: {integrity: sha512-Pc/AFTdwZwEKJxFJvlxrSmGe/di+aAOBn60sremrpLo6VI/6cmiUYNNwlI5KNYttg7uypzA3ILPMPgxB2GYZEg==}
+    dev: false
+
+  /@react-dnd/shallowequal/4.0.2:
+    resolution: {integrity: sha512-/RVXdLvJxLg4QKvMoM5WlwNR9ViO9z8B/qPcc+C0Sa/teJY7QG7kJ441DwzOjMYEY7GmU4dj5EcGHIkKZiQZCA==}
     dev: false
 
   /@redux-devtools/extension/3.2.5_redux@4.2.1:
@@ -1057,6 +1075,14 @@ packages:
       redux: 4.2.1
     dev: false
 
+  /dnd-core/16.0.1:
+    resolution: {integrity: sha512-HK294sl7tbw6F6IeuK16YSBUoorvHpY8RHO+9yFfaJyCDVb6n7PRcezrOEOa2SBCqiYpemh5Jx20ZcjKdFAVng==}
+    dependencies:
+      '@react-dnd/asap': 5.0.2
+      '@react-dnd/invariant': 4.0.2
+      redux: 4.2.1
+    dev: false
+
   /doctrine/3.0.0:
     resolution: {integrity: sha512-yS+Q5i3hBf7GBkd4KG8a7eBNNWNGLTaEwwYWUijIYM7zrlYDM0BFXHjjPWlWZ1Rg7UaddZeIDmi9jF3HmqiQ2w==}
     engines: {node: '>=6.0.0'}
@@ -1335,6 +1361,10 @@ packages:
       ignore: 5.2.4
       merge2: 1.4.1
       slash: 3.0.0
+    dev: true
+
+  /globrex/0.1.2:
+    resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==}
     dev: true
 
   /graphemer/1.4.0:
@@ -1698,6 +1728,12 @@ packages:
       dnd-core: 14.0.1
     dev: false
 
+  /react-dnd-html5-backend/16.0.1:
+    resolution: {integrity: sha512-Wu3dw5aDJmOGw8WjH1I1/yTH+vlXEL4vmjk5p+MHxP8HuHJS1lAGeIdG/hze1AvNeXWo/JgULV87LyQOr+r5jw==}
+    dependencies:
+      dnd-core: 16.0.1
+    dev: false
+
   /react-dnd/14.0.4_o5ysialsahsznabqayk7pree4e:
     resolution: {integrity: sha512-AFJJXzUIWp5WAhgvI85ESkDCawM0lhoVvfo/lrseLXwFdH3kEO3v8I2C81QPqBW2UEyJBIPStOhPMGYGFtq/bg==}
     peerDependencies:
@@ -1717,6 +1753,30 @@ packages:
       '@react-dnd/shallowequal': 2.0.0
       '@types/react': 18.2.33
       dnd-core: 14.0.1
+      fast-deep-equal: 3.1.3
+      hoist-non-react-statics: 3.3.2
+      react: 18.2.0
+    dev: false
+
+  /react-dnd/16.0.1_o5ysialsahsznabqayk7pree4e:
+    resolution: {integrity: sha512-QeoM/i73HHu2XF9aKksIUuamHPDvRglEwdHL4jsp784BgUuWcg6mzfxT0QDdQz8Wj0qyRKx2eMg8iZtWvU4E2Q==}
+    peerDependencies:
+      '@types/hoist-non-react-statics': '>= 3.3.1'
+      '@types/node': '>= 12'
+      '@types/react': '>= 16'
+      react: '>= 16.14'
+    peerDependenciesMeta:
+      '@types/hoist-non-react-statics':
+        optional: true
+      '@types/node':
+        optional: true
+      '@types/react':
+        optional: true
+    dependencies:
+      '@react-dnd/invariant': 4.0.2
+      '@react-dnd/shallowequal': 4.0.2
+      '@types/react': 18.2.33
+      dnd-core: 16.0.1
       fast-deep-equal: 3.1.3
       hoist-non-react-statics: 3.3.2
       react: 18.2.0
@@ -1985,6 +2045,19 @@ packages:
       typescript: 5.2.2
     dev: true
 
+  /tsconfck/2.1.2_typescript@5.2.2:
+    resolution: {integrity: sha512-ghqN1b0puy3MhhviwO2kGF8SeMDNhEbnKxjK7h6+fvY9JAxqvXi8y5NAHSQv687OVboS2uZIByzGd45/YxrRHg==}
+    engines: {node: ^14.13.1 || ^16 || >=18}
+    hasBin: true
+    peerDependencies:
+      typescript: ^4.3.5 || ^5.0.0
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      typescript: 5.2.2
+    dev: true
+
   /tslib/2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
     dev: false
@@ -2125,6 +2198,23 @@ packages:
       - sugarss
       - supports-color
       - terser
+    dev: true
+
+  /vite-tsconfig-paths/4.2.1_cnaluuumdmttzz4zpr3jp6tchm:
+    resolution: {integrity: sha512-GNUI6ZgPqT3oervkvzU+qtys83+75N/OuDaQl7HmOqFTb0pjZsuARrRipsyJhJ3enqV8beI1xhGbToR4o78nSQ==}
+    peerDependencies:
+      vite: '*'
+    peerDependenciesMeta:
+      vite:
+        optional: true
+    dependencies:
+      debug: 4.3.4
+      globrex: 0.1.2
+      tsconfck: 2.1.2_typescript@5.2.2
+      vite: 4.5.0
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
     dev: true
 
   /vite/4.5.0:

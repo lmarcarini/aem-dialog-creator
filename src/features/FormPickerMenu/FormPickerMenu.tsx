@@ -1,9 +1,6 @@
 import { Button, Stack, Title } from "@mantine/core";
 import { IconArrowRight } from "@tabler/icons-react";
-import {
-  ComponentTypes,
-  useComponentsStore,
-} from "../../stores/useComponentsStore";
+import { ComponentTypes, useComponentsStore } from "stores/useComponentsStore";
 import classes from "./FormPickerMenu.module.css";
 
 export const FormPickerMenu = () => {
@@ -19,14 +16,14 @@ export const FormPickerMenu = () => {
       <Button
         fullWidth
         rightSection={<IconArrowRight />}
-        onClick={handleClick("TextField")}
+        onClick={handleClick("textfield")}
       >
         Text Field
       </Button>
       <Button
         fullWidth
         rightSection={<IconArrowRight />}
-        onClick={handleClick("TextArea")}
+        onClick={handleClick("textarea")}
       >
         Text Area
       </Button>

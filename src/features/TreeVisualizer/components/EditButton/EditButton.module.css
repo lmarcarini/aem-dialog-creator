@@ -1,0 +1,18 @@
+.editButton {
+  background-color: #ffffff00;
+  height: 100%;
+}
+
+.editIcon {
+  color: rgb(220, 87, 87);
+}
+
+.editButton:hover .editIcon {
+  color: rgb(249, 40, 40);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
