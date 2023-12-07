@@ -2,7 +2,6 @@ import {
   ActionIcon,
   Button,
   Checkbox,
-  CheckboxGroup,
   Group,
   Modal,
   NativeSelect,
@@ -11,10 +10,10 @@ import {
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconEdit } from "@tabler/icons-react";
-import styles from "./EditButton.module.css";
 import { useMemo } from "react";
 import { useComponentsStore } from "stores/useComponentsStore";
 import { getFieldProperties } from "utils/getFieldProperties";
+import styles from "./EditButton.module.css";
 
 type Props = { path: number[] };
 
