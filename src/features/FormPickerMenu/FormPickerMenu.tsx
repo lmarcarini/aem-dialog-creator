@@ -14,14 +14,14 @@ export const FormPickerMenu = () => {
   return (
     <Stack className={classes.wrapper}>
       <Title order={2}>Components</Title>
-      {Object.keys(fieldProperties).map((field) => (
+      {Object.entries(fieldProperties).map(([field, fieldProperty]) => (
         <Button
           fullWidth
           rightSection={<IconArrowRight />}
           onClick={handleClick(field as keyof typeof fieldProperties)}
           id={field}
         >
-          {field}
+          {fieldProperty.displayTitle}
         </Button>
       ))}
     </Stack>
