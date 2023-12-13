@@ -47,8 +47,9 @@ export const datePicker: FieldPropertiesType = {
     {
       title: "type",
       required: false,
-      type: "string",
+      type: "list",
       default: "date",
+      listOptions: ["", "date", "datetime", "time"],
       description: "The type of the picker. date | datetime | time",
     },
     {

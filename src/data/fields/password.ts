@@ -53,7 +53,7 @@ export const password: FieldPropertiesType = {
       required: false,
       type: "string",
       description:
-        "The name of the other password field that is used to verify this field. If the values of both fields don’t match, validation error is shown.",
+        "The name of the other password field that is used to verify this field. If the values of both fields do not match, validation error is shown.",
     },
     {
       title: "validation",
