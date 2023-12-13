@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="96" height="96" fill="#FF0000">
+    <!-- Background Circle -->
+    <circle cx="12" cy="12" r="11" fill="#ffffff" stroke="#333333" stroke-width="2"/>
+
+    <!-- Adobe AEM Logo -->
+    <path d="M12 3.5L3.5 12l8.5 8.5 8.5-8.5z" fill="#FF0000"/>
+    <path d="M8.5 12L12 15.5l3.5-3.5-3.5-3.5z" fill="#333333"/>
+    <path d="M10.4 9.6h3.2L12 11.9l-1.6-2.3z" fill="#E65100"/>
+    <!-- Dark Orange -->
+</svg>
