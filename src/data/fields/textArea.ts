@@ -3,6 +3,7 @@ import { FieldPropertiesType } from "types/fieldsPropertiesType";
 
 export const textAreaProperties: FieldPropertiesType = {
   resourceTypePath: "granite/ui/components/coral/foundation/form/textarea",
+  displayTitle: "Text Area",
   optionFields: [
     ...fieldBaseProperty.optionFields,
     {

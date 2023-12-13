@@ -1,7 +1,9 @@
-import { textAreaProperties } from "data/fields/textArea";
-import { textFieldProperties } from "data/fields/textField";
+import { switchProperties } from "data/fields/switch";
+import { textAreaProperties as textfield } from "data/fields/textArea";
+import { textFieldProperties as textarea } from "data/fields/textField";
 
 export const fieldProperties = {
-  textfield: textFieldProperties,
-  textarea: textAreaProperties,
+  textfield,
+  textarea,
+  switch: switchProperties,
 };
