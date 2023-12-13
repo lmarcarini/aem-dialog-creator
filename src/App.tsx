@@ -18,6 +18,8 @@ import {
 } from "features";
 import { useViewStore } from "stores/useViewStore";
 import styles from "./App.module.css";
+import { EditButton } from "features/EditButton/EditButton";
+import { DeleteButton } from "features/DeleteButton/DeleteButton";
 
 function App() {
   const [opened, { toggle }] = useDisclosure();
@@ -53,7 +55,12 @@ function App() {
       </AppShell.Navbar>
       <AppShell.Main>
         {currentView === "code" && <CodeVisualizer />}
-        {currentView === "tree" && <TreeVisualizer />}
+        {currentView === "tree" && (
+          <TreeVisualizer
+            editButton={(path) => <EditButton path={path} />}
+            deleteButton={(path) => <DeleteButton path={path} />}
+          />
+        )}
       </AppShell.Main>
     </AppShell>
   );

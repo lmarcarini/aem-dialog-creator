@@ -1,7 +1,8 @@
+import { fieldProperties } from "data/fieldProperties";
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 
-export type ComponentTypes = "textfield" | "textarea";
+export type ComponentTypes = keyof typeof fieldProperties;
 
 export type ComponentI = {
   type: ComponentTypes;
