@@ -72,9 +72,7 @@ export const EditButton = (props: Props) => {
             defaultValue={node?.title}
           />
           {properties.optionFields.map((optionData) => {
-            const defaultValue = node.options
-              ? node.options[optionData.title]
-              : optionData.default;
+            const defaultValue = node.options && node.options[optionData.title];
             switch (optionData.type) {
               case "string":
                 return (
