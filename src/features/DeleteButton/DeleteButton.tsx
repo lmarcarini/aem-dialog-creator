@@ -10,14 +10,10 @@ export const DeleteButton = (props: Props) => {
   const setStructure = useComponentsStore((state) => state.setStructure);
 
   const removeNode = (path: number[]) => () => {
-    if (path.length < 1) return;
-    if (path.length === 1) {
-      const newStructure = [...structure];
-      const nodeNumber = path.at(0);
-      if (nodeNumber === undefined) return;
-      newStructure.splice(nodeNumber, 1);
-      setStructure(newStructure);
-    }
+    if (path.length !== 1) return;
+    const nodeNumber = path.at(0);
+    if (nodeNumber === undefined) return;
+    setStructure(structure.toSpliced(nodeNumber, 1));
   };
 
   return (
