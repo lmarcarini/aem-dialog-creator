@@ -9,7 +9,7 @@ export const fieldBaseProperty: FieldPropertiesType = {
       title: "tooltipPosition",
       required: false,
       type: "list",
-      listOptions: ["right", "left", "top", "bottom"],
+      listOptions: ["", "right", "left", "top", "bottom"],
     },
   ],
 };
