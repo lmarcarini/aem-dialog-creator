@@ -77,5 +77,11 @@ export const colorField: FieldPropertiesType = {
       type: "boolean",
       description: "Indicates if default colors should be displayed.",
     },
+    {
+      title: "validation",
+      required: false,
+      type: "string",
+      description: "The name of the validator to be applied.",
+    },
   ],
 };
