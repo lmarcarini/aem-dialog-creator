@@ -2,7 +2,7 @@ import { fieldBaseProperty } from "data/fields/base";
 import { FieldPropertiesType } from "types/fieldsPropertiesType";
 
 export const password: FieldPropertiesType = {
-  resourceTypePath: "granite/ui/components/coral/foundation/form/textarea",
+  resourceTypePath: "granite/ui/components/coral/foundation/form/password",
   displayTitle: "Text Area",
   optionFields: [
     ...fieldBaseProperty.optionFields,
