@@ -1,9 +1,9 @@
 import { fieldBaseProperty } from "data/fields/base";
 import { FieldPropertiesType } from "types/fieldsPropertiesType";
 
-export const textAreaProperties: FieldPropertiesType = {
-  resourceTypePath: "granite/ui/components/coral/foundation/form/textarea",
-  displayTitle: "Text Area",
+export const numberField: FieldPropertiesType = {
+  resourceTypePath: "granite/ui/components/coral/foundation/form/numberfield",
+  displayTitle: "Number Field",
   optionFields: [
     ...fieldBaseProperty.optionFields,
     {
@@ -15,16 +15,10 @@ export const textAreaProperties: FieldPropertiesType = {
     },
     {
       title: "value",
+      default: "true",
       required: false,
       type: "string",
       description: "The value of the field.",
-    },
-    {
-      title: "emptyText",
-      required: false,
-      type: "string",
-      description:
-        "i18n A hint to the user of what can be entered in the field.",
     },
     {
       title: "disabled",
@@ -39,32 +33,36 @@ export const textAreaProperties: FieldPropertiesType = {
       description: "Indicates if the field is mandatory to be filled.",
     },
     {
-      title: "autocomplete",
+      title: "typeHint",
       required: false,
       type: "string",
-      description:
-        "Indicates if the value can be automatically completed by the browser.",
-      default: "off",
+      description: "The value of SlingPostServlet @TypeHint.",
     },
     {
-      title: "maxlength",
+      title: "validation",
       required: false,
-      type: "number",
-      description:
-        "The maximum number of characters (in Unicode code points) that the user can enter.",
+      type: "string",
+      description: "The name of the validator to be applied.",
     },
     {
-      title: "cols",
+      title: "min",
       required: false,
       type: "number",
-      description:
-        "The visible width of the text control, in average character widths.",
+      description: "The minimum value allowed.",
     },
     {
-      title: "rows",
+      title: "max",
       required: false,
       type: "number",
-      description: "The number of visible text lines.",
+      description: "The maximum value allowed.",
+    },
+    {
+      title: "step",
+      required: false,
+      type: "string",
+      default: "1",
+      description:
+        "The increment/decrement step amount. \nnumber A double that is greater than zero. In this case, the field accepts only values at multiples of the step value greater than the minimum. \n'any' The value can be in any number.",
     },
   ],
 };

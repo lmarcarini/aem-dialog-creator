@@ -30,13 +30,7 @@ ${
 
 const getSingleComponentXml =
   (nestingLevel: number) => (component: ComponentI) => {
-    switch (component.type) {
-      case "textfield":
-      case "textarea":
-        return getFieldXml(nestingLevel, component);
-      default:
-        return "";
-    }
+    return getFieldXml(nestingLevel, component);
   };
 
 export const getComponentXml = (structure: ComponentI[]) => {

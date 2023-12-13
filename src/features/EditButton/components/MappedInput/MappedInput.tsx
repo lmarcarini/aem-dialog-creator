@@ -6,12 +6,16 @@ type Props = { optionData: FieldOptionType; node: ComponentI };
 
 export const MappedInput = ({ optionData, node }: Props) => {
   const defaultValue = node.options && node.options[optionData.title];
+  const fullDescription = [
+    optionData.description,
+    optionData.default && "Default: " + optionData.default,
+  ].join(" ");
   const renderInput = {
     string: (
       <TextInput
         key={optionData.title}
         label={optionData.title}
-        description={optionData.description}
+        description={fullDescription}
         required={!!optionData.required}
         name={optionData.title}
         defaultValue={defaultValue}
@@ -21,7 +25,7 @@ export const MappedInput = ({ optionData, node }: Props) => {
       <NumberInput
         key={optionData.title}
         label={optionData.title}
-        description={optionData.description}
+        description={fullDescription}
         required={!!optionData.required}
         name={optionData.title}
         defaultValue={defaultValue}
@@ -32,6 +36,7 @@ export const MappedInput = ({ optionData, node }: Props) => {
         required={!!optionData.required}
         name={optionData.title}
         label={optionData.title}
+        description={fullDescription}
         defaultChecked={!!defaultValue}
       />
     ),
@@ -39,7 +44,7 @@ export const MappedInput = ({ optionData, node }: Props) => {
       <NativeSelect
         key={optionData.title}
         label={optionData.title}
-        description={optionData.description}
+        description={fullDescription}
         required={!!optionData.required}
         name={optionData.title}
         defaultValue={defaultValue}
