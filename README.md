@@ -18,9 +18,9 @@ This application aims to simplify the process of creating "\_cq_dialog/content.x
 
 ## To do
 
-- Form component properties editing
+- ~Form component properties editing~
 - Allow Nested components
-- Creating additional components
+- ~Creating additional components~
 - Dialog visualization preview
 - Error parsing
 

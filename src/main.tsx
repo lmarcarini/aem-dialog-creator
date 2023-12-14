@@ -1,8 +1,7 @@
-import React from "react";
+import { MantineProvider, createTheme } from "@mantine/core";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
-import { MantineProvider, createTheme } from "@mantine/core";
 
 const theme = createTheme({
   /** Put mantine theme override here */
