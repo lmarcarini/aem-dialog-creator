@@ -19,5 +19,6 @@ export type FieldOptionType =
 export type FieldPropertiesType = {
   resourceTypePath: string;
   displayTitle: string;
+  nestable?: boolean;
   optionFields: FieldOptionType[];
 };

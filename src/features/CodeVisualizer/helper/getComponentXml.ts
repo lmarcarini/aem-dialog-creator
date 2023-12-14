@@ -3,7 +3,38 @@ import { ComponentI } from "../../../stores/useComponentsStore";
 
 const TAB_SPACING = 4;
 
-const getFieldXml = (nestingLevel: number, component: ComponentI) => {
+const getNestableXml =
+  (childrenXml: string) =>
+  (nestingLevel: number, component: ComponentI): string => {
+    const singleSpacing = " ".repeat(TAB_SPACING);
+    const spacing = singleSpacing.repeat(nestingLevel);
+    const properties = getFieldProperties(component.type);
+
+    const filterNoOption = (option: (typeof properties.optionFields)[0]) =>
+      component.options && component.options[option.title];
+
+    const getOptions = (option: (typeof properties.optionFields)[0]) => {
+      if (!component.options || !component.options[option.title]) return "";
+      const curValue = component.options[option.title];
+      if (option.type === "boolean")
+        return `${spacing}    ${option.title}="{Boolean}${curValue === "on"}"`;
+      return `${spacing}    ${option.title}="${curValue}"`;
+    };
+
+    return `${spacing}<${component.title}
+${spacing + singleSpacing}jcr:primaryType="nt:unstructured"
+${spacing + singleSpacing}sling:resourceType="${properties.resourceTypePath}"
+${
+  properties.optionFields.filter(filterNoOption).map(getOptions).join("\n") ||
+  spacing + singleSpacing
+}>
+${spacing}    <items jcr:primaryType="nt:unstructured">
+${childrenXml}
+${spacing}    </items>
+${spacing}</${component.title}>`;
+  };
+
+const getFieldXml = (nestingLevel: number, component: ComponentI): string => {
   const singleSpacing = " ".repeat(TAB_SPACING);
   const spacing = singleSpacing.repeat(nestingLevel);
   const properties = getFieldProperties(component.type);
@@ -29,7 +60,15 @@ ${
 };
 
 const getSingleComponentXml =
-  (nestingLevel: number) => (component: ComponentI) => {
+  (nestingLevel: number) =>
+  (component: ComponentI): string => {
+    const properties = getFieldProperties(component.type);
+    if (properties.nestable && component.children)
+      return getNestableXml(
+        component.children
+          .map(getSingleComponentXml(nestingLevel + 2))
+          .join("\n")
+      )(nestingLevel, component);
     return getFieldXml(nestingLevel, component);
   };
 

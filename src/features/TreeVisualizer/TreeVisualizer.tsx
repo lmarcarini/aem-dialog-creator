@@ -3,6 +3,7 @@ import "@nosferatu500/react-sortable-tree/style.css";
 import "./TreeCustomStyle.css";
 import styles from "./TreeVisualizer.module.css";
 import { useComponentsStore } from "stores/useComponentsStore";
+import { getFieldProperties } from "utils/getFieldProperties";
 
 type Props = {
   editButton: (path: number[]) => JSX.Element | null;
@@ -19,7 +20,7 @@ export const TreeVisualizer = ({ editButton, deleteButton }: Props) => {
         className="customTree"
         treeData={structure}
         onChange={setStructure}
-        canNodeHaveChildren={(_node) => false}
+        canNodeHaveChildren={(node) => !!getFieldProperties(node.type).nestable}
         generateNodeProps={({ path }) => ({
           buttons: [editButton(path), deleteButton(path)],
         })}
